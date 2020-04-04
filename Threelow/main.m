@@ -7,11 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Dice.h"
+#import "GameController.h"
+#import "InputHandler.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        GameController *gameController = [[GameController alloc] init];
+        while (YES) {
+            NSString *userInput = [InputHandler getUserInput:255 prompt:@"What do you want?"];
+            if ([userInput  isEqual: @"quit"]) {
+                break;
+            }else if ([userInput  isEqual: @"roll"]) {
+                [gameController dice];
+            }else if ([userInput  isEqual: @"reset"]) {
+                [gameController resetDice];
+            }else {
+                [gameController holdDiec:userInput];
+            }
+            [gameController print];
+        }
     }
     return 0;
 }
