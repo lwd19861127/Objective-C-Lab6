@@ -30,17 +30,18 @@
 {
     int totalPoints = 0;
     for (id obj in self.dicesPoints) {
-        totalPoints += [obj intValue];
-        NSLog(@"%@", obj);
-    }
-    NSLog(@"TotalPoints:%d", totalPoints);
-    for (int i = 0; i<5; i++) {
-        if ([self.held[i] isEqualTo:[NSNumber numberWithInt:1]]) {
-            NSLog(@"[%d]", i+1);
-        }else{
-            NSLog(@"%d", i+1);
+        if ([obj intValue] != 3 ){
+            totalPoints += [obj intValue];
         }
     }
+    for (int i = 0; i<5; i++) {
+        if ([self.held[i] isEqualTo:[NSNumber numberWithInt:1]]) {
+            NSLog(@"[%@]", [self diceShap:self.dicesPoints[i]]);
+        }else{
+            NSLog(@"%@", [self diceShap:self.dicesPoints[i]]);
+        }
+    }
+    NSLog(@"TotalPoints:%d", totalPoints);
 }
 
 - (void) dice
@@ -63,15 +64,15 @@
 {
     if (points == [NSNumber numberWithInt: 1]) {
         return @"⚀";
-    }else if ([NSNumber numberWithInt: 2]) {
+    }else if (points == [NSNumber numberWithInt: 2]) {
         return @"⚁";
-    }else if ([NSNumber numberWithInt: 3]) {
+    }else if (points == [NSNumber numberWithInt: 3]) {
         return @"⚂";
-    }else if ([NSNumber numberWithInt: 4]) {
+    }else if (points == [NSNumber numberWithInt: 4]) {
         return @"⚃";
-    }else if ([NSNumber numberWithInt: 5]) {
+    }else if (points == [NSNumber numberWithInt: 5]) {
         return @"⚄";
-    }else if ([NSNumber numberWithInt: 6]) {
+    }else if (points == [NSNumber numberWithInt: 6]) {
         return @"⚅";
     }else {
         return @"";

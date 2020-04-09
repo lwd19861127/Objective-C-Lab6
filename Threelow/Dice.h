@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Dice : NSObject
 
 
-@property (nonatomic, assign) int points;
+@property (nonatomic, assign) int points; 
 
 - (int) throw;
 
